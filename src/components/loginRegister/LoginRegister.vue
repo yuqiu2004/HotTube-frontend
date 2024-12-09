@@ -125,7 +125,7 @@ export default {
             }
             this.$store.state.isLoading = true;
             // 这里为了更方便捕捉到错误后给出提示，就不使用封装的函数了
-            const result = await axios.post("/api/user/account/login", {
+            const result = await axios.post("/api/auth/account/login", {
                 username: this.usernameLogin.toString(),
                 password: this.passwordLogin.toString(),
             }).catch(() => {
@@ -169,7 +169,7 @@ export default {
                 return;
             }
 
-            const result = await this.$post("/user/account/register", {
+            const result = await this.$post("/auth/account/register", {
                 username: this.usernameRegister.toString(),
                 password: this.passwordRegister.toString(),
                 confirmedPassword: this.confirmedPassword.toString(),
@@ -183,7 +183,7 @@ export default {
             }
         },
 
-        
+
         // 开启实时通信消息服务
         async initIMServer() {
             await this.$store.dispatch("connectWebSocket");
@@ -211,7 +211,7 @@ export default {
         // 获取用户赞踩的评论集合
         async getLikeAndDisLikeComment() {
             const res = await this.$get("/comment/get-like-and-dislike", {
-                params: { uid: this.$store.state.user.uid },
+                // params: { uid: this.$store.state.user.uid },
                 headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
             });
             if (!res.data) return;
