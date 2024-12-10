@@ -141,16 +141,16 @@ export default {
                 this.$store.state.isLoading = false;
             }
             if (result.data.code === 200) {
+                ElMessage.success(result.data.message);
+                this.$store.commit("updateIsLogin", true);  // 修改在线状态
+                this.$emit("loginSuccess"); // 触发父组件关闭登录框的回调
+                this.$store.state.isLoading = false;
                 localStorage.setItem("teri_token", result.data.data.token); // 浏览器缓存token
                 this.$store.commit("updateUser", result.data.data.user);    // 更新vuex中当前用户信息
                 await this.$store.dispatch("getMsgUnread");
                 await this.initIMServer();  // 开启即时通信websocket
                 await this.getFavorites();
                 await this.getLikeAndDisLikeComment();
-                ElMessage.success(result.data.message);
-                this.$store.commit("updateIsLogin", true);  // 修改在线状态
-                this.$emit("loginSuccess"); // 触发父组件关闭登录框的回调
-                this.$store.state.isLoading = false;
             }
         },
 
