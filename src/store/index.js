@@ -121,12 +121,13 @@ export default createStore({
         handleWsClose(state) {
             // ElMessage.error("实时通信websocket关闭,请刷新页面重试");
             console.log("实时通信websocket关闭,请登录并刷新页面重试");
-            state.isLogin = false;
-            state.user = {};
-            state.msgUnread = [0, 0, 0, 0, 0, 0];
-            state.attitudeToVideo = {};
-            state.favorites = [];
-            state.likeComment = [];
+            // todo : 为方便开发先注释掉
+            // state.isLogin = false; // todo 暂时没有ws 不能处理请求
+            // state.user = {};
+            // state.msgUnread = [0, 0, 0, 0, 0, 0];
+            // state.attitudeToVideo = {};
+            // state.favorites = [];
+            // state.likeComment = [];
             state.dislikeComment = [];
         },
         handleWsMessage(state, e) {

@@ -213,7 +213,7 @@
                         </div>
                     </div>
                     <!-- 简介 -->
-                    <div class="form-item descr" style="align-items: flex-start;">
+                    <div class="form-item desc" style="align-items: flex-start;">
                         <div class="section-title" style="padding-top: 35px;">
                             <span class="section-title-deg"></span>
                             <span class="section-title-main">简介</span>
@@ -223,7 +223,7 @@
                             type="textarea"
                             maxlength="2000"
                             show-word-limit
-                            v-model="form.descr"
+                            v-model="form.desc"
                             placeholder="填写更全面的相关信息，让更多的人能找到你的视频吧:)"
                         ></el-input>
                     </div>
@@ -372,7 +372,7 @@ export default {
                 auth: 0,    // 0不设置权限 1未经作者授权禁止转载
                 category: [{id: "anime", name: "番剧"}, {id: "finish", name: "完结动画"}],  // 投稿分区
                 tags: [],   // 投稿标签
-                descr: "",  // 投稿简介
+                desc: "",  // 投稿简介
             },
         }
     },
@@ -415,7 +415,7 @@ export default {
                 auth: 0,
                 category: [{id: "anime", name: "番剧"}, {id: "finish", name: "完结动画"}],
                 tags: [],
-                descr: "",
+                desc: "",
             }
         },
 
@@ -469,7 +469,7 @@ export default {
                 this.upload();  //开始上传
             } else {
                 // 文件大小超出限制
-                ElMessage.error("视频太大了，特丽丽装不下呜~")
+                ElMessage.error("视频大小应小于" + maxSizeInBytes/1024/1024 + "MB~")
             }
         },
 
@@ -900,7 +900,7 @@ export default {
                     tags = tags + tag + '\n';
                 });
                 formData.append('tags', tags);
-                formData.append('descr', this.form.descr);
+                formData.append('desc', this.form.desc);
                 // 发送POST请求
                 this.$post("/video/add", formData, {
                     headers: {

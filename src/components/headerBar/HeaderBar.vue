@@ -615,6 +615,7 @@
             },
 
             noPage() {
+                console.log(localStorage.getItem("teri_token"))
                 ElMessage.warning("该功能暂未开放");
             }
         },

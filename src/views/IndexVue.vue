@@ -350,12 +350,13 @@ export default {
         // 请求
         // 获取游客随机推荐
         async getRandomVideos() {
-            this.loadingRandom = true;
-            const res = await this.$get("/video/random/visitor");
-            if (res.data.data) {
-                this.randomVideos = res.data.data;
-                this.loadingRandom = false;
-            }
+            // todo : 方便开发先注释
+            // this.loadingRandom = true;
+            // const res = await this.$get("/video/random/visitor");// todo 接口问题
+            // if (res.data.data) {
+            //     this.randomVideos = res.data.data;
+            //     this.loadingRandom = false;
+            // }
             // console.log(this.randomVideos);
         },
 

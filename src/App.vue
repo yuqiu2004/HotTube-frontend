@@ -23,7 +23,7 @@ export default {
     methods: {
         // 获取频道列表
         async getChannels() {
-            let res = await this.$get("/category/getall");
+            let res = await this.$get("/video/category/getall");
             // console.log("频道列表: ", res);
             this.$store.commit("updateChannels", res.data.data);
         },
@@ -87,6 +87,7 @@ export default {
 
     },
     async created() {
+        this.getChannels();
         // 如果缓存中有token，尝试获取用户数据，并建立全双工通信
         if (localStorage.getItem("teri_token")) {
             await this.$store.dispatch("getPersonalInfo");
@@ -98,7 +99,6 @@ export default {
             await this.getFavorites();
             await this.getLikeAndDisLikeComment();
         }
-        this.getChannels();
         this.getHotSearch();
     },
     mounted() {

@@ -37,14 +37,14 @@ export function get(url, config) {
       console.log(err);
       if (err.response.headers.message === 'not login') {
         // 修改当前的登录状态
-        store.commit("initData");
+        // store.commit("initData");
         // 关闭websocket
         if (store.state.ws) {
           store.state.ws.close();
           store.commit('setWebSocket', null);
         }
         // 清除本地token缓存
-        localStorage.removeItem("teri_token");
+        // localStorage.removeItem("teri_token");
         ElMessage.error("请登录后查看");
         store.state.isLoading = false;
       } else {
@@ -112,14 +112,14 @@ export function post(url, data, headers) {
       console.log(err);
       if (err.response.headers.message == 'not login') {
         // 修改当前的登录状态
-        store.commit("initData");
+        // store.commit("initData");
         // 关闭websocket
         if (store.state.ws) {
           store.state.ws.close();
           store.commit('setWebSocket', null);
         }
         // 清除本地token缓存
-        localStorage.removeItem("teri_token");
+        // localStorage.removeItem("teri_token");
         ElMessage.error("请登录后查看");
         store.state.isLoading = false;
       } else {
