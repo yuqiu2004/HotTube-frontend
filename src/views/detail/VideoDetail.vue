@@ -520,7 +520,7 @@ export default {
             formData.append("vid", Number(this.video.vid));
             formData.append("isLove", isLove);
             formData.append("isSet", isSet);
-            const res = await this.$post("/video/love-or-not", formData, {
+            const res = await this.$post("/favorite/video/love-or-not", formData, {
                 headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
             });
             if (!res.data.data) {
@@ -549,7 +549,7 @@ export default {
 
         // 获取收藏了该视频的收藏夹ID列表
         async getCollectedFids() {
-            const res = await this.$get("/video/collected-fids", {
+            const res = await this.$get("/favorite/video/collected-fids", {
                 params: { vid: Number(this.video.vid) },
                 headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
             });
@@ -632,7 +632,7 @@ export default {
         },
 
 
-        // 处理websocket事件        
+        // 处理websocket事件
         handleWsClose() {
             // console.log("弹幕websocket信道关闭,请刷新页面重试");
             setTimeout(() => {

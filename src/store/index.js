@@ -145,7 +145,7 @@ export default createStore({
                         state.likeComment = [];
                         state.dislikeComment = [];
                         // 清除本地token缓存
-                        localStorage.removeItem("teri_token");
+                        // localStorage.removeItem("teri_token");
                     }
                     ElMessage.error(data.data);
                     break;
@@ -348,7 +348,7 @@ export default createStore({
         // 获取当前用户信息
         async getPersonalInfo(context) {
             // 这里为了更方便捕捉到错误后做出反应，就不使用封装的函数了
-            const result = await axios.get("/api/user/personal/info", {
+            const result = await axios.get("/api/auth/account/info", {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("teri_token"),
                 },
@@ -382,7 +382,7 @@ export default createStore({
                 context.commit('setWebSocket', null);
             }
             // 发送退出请求，处理redis中的缓存信息，不能用异步，不然token过期导致退出失败，后面步骤卡死
-            axios.get("/api/user/account/logout", {
+            axios.get("/api/auth/account/logout", {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("teri_token"),
                 },

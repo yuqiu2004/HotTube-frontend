@@ -201,7 +201,7 @@ export default {
             const formData = new FormData();
             formData.append("vid", info.vid);
             formData.append("fid", info.fid);
-            const res = await this.$post("/video/cancel-collect", formData, {
+            const res = await this.$post("/favorite/video/cancel-collect", formData, {
                 headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
             });
             if (!res.data || res.data.code !== 200) return;

@@ -109,7 +109,7 @@ export default {
             formData.append("vid", Number(this.vid));
             formData.append("adds", add.join(','));
             formData.append("removes", remove.join(','));
-            const res = await this.$post("/video/collect", formData, {
+            const res = await this.$post("/favorite/video/collect", formData, {
                 headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
             })
             if (!res.data) return;
@@ -125,7 +125,7 @@ export default {
             this.$store.commit("updateFavorites", this.favorites);
             this.$emit("collected", info);
         },
-        
+
 
         ///////// 事件 ///////////
         // 选择或者取消选择
