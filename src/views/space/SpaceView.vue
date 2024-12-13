@@ -260,7 +260,7 @@ export default {
             if (!res.data) return;
             this.worksCount = res.data.data;
         },
-		
+
 		// 获取粉丝信息
 		async getFollowerInfo(uid){
 			const res = await this.$get(`/relation/follower/${this.user.uid}`);
@@ -268,7 +268,7 @@ export default {
 			this.user.followsCount = res.data.data.length;
 			this.followStatus = res.data.data.includes(this.$store.state.user.id);
 		},
-		
+
 		// 获取关注信息
 		async getFollowedInfo(uid){
 			const res = await this.$get(`/relation/followed/${this.user.uid}`);
@@ -298,7 +298,7 @@ export default {
 				ElMessage.info("关注成功");
 			}
 		},
-		
+
 		// 取关用户
 		async unFollow() {
 			// 读取登录状态
