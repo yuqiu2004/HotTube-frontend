@@ -35,7 +35,8 @@
                             </div>
                         </div>
                         <div class="h-action" v-if="user.uid !== this.$store.state.user.uid">
-                            <div class="h-f-btn h-follow" @click="noPage">关注</div>
+							<div class="h-f-btn h-followed" v-if="followStatus" @click="unFollow">取关</div>
+                            <div class="h-f-btn h-follow" v-else @click="follow">关注</div>
                             <div class="h-f-btn h-message" @click="createChat">发消息</div>
                             <div class="be-dropdown h-add-to-black">
                                 <i class="iconfont icon-gengduo"></i>
@@ -171,6 +172,7 @@ export default {
             themeShow: false,   // 是否展开更换头图的抽屉
             hoverIdx: -1,   // 悬停导航栏
             mounted: false,
+			followStatus: 0
         }
     },
     computed: {
@@ -258,6 +260,67 @@ export default {
             if (!res.data) return;
             this.worksCount = res.data.data;
         },
+		
+		// 获取粉丝信息
+		async getFollowerInfo(uid){
+			const res = await this.$get(`/relation/follower/${this.user.uid}`);
+			if(!res.data) return;
+			this.user.followsCount = res.data.data.length;
+			this.followStatus = res.data.data.includes(this.$store.state.user.id);
+		},
+		
+		// 获取关注信息
+		async getFollowedInfo(uid){
+			const res = await this.$get(`/relation/followed/${this.user.uid}`);
+			if(!res.data) return;
+			this.user.fansCount = res.data.data.length;
+		},
+
+		// 关注用户
+		async follow() {
+			// 读取登录状态
+			if(!localStorage.getItem("teri_token")){
+				ElMessage.error("请登录");
+			}
+			else{
+				// 读取被访问者id
+				const targetUid = this.user.uid;
+				const myUid = this.$store.state.user.uid;
+				const form = {
+					followerUid : myUid,
+					followedUid : targetUid,
+					status : 1
+				};
+				await this.$get("/relation/add", form, {
+					headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
+				});
+				this.followStatus = 1;
+				ElMessage.info("关注成功");
+			}
+		},
+		
+		// 取关用户
+		async unFollow() {
+			// 读取登录状态
+			if(!localStorage.getItem("teri_token")){
+				ElMessage.error("请登录");
+			}
+			else{
+				// 读取被访问者id
+				const targetUid = this.user.uid;
+				const myUid = this.$store.state.user.uid;
+				const form = {
+					followerUid : myUid,
+					followedUid : targetUid,
+					status : 0
+				};
+				await this.$get("/relation/update", form, {
+					headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
+				});
+				this.followStatus = 0;
+				ElMessage.info("取关成功");
+			}
+		},
 
         // 创建聊天
         createChat() {
@@ -309,11 +372,7 @@ export default {
         // 计算用户等级
         handleLevel(exp) {
             return handleLevel(exp);
-        },
-
-        noPage() {
-            ElMessage.warning("该功能暂未开放");
-        },
+        }
     },
     async created() {
         if (this.$route.path === "/space" || this.$route.path === "/space/") {
@@ -337,6 +396,8 @@ export default {
                 await this.getUserFavList(uid);
                 await this.getUserInfo(uid);
                 await this.getUserWorksCount(uid);
+				await this.getFollowedInfo(uid);
+				await this.getFollowerInfo(uid);
             } else {
                 this.$router.push('/notfound');
             }
@@ -354,6 +415,8 @@ export default {
                 await this.getUserFavList(uid);
                 await this.getUserInfo(uid);
                 await this.getUserWorksCount(uid);
+				await this.getFollowedInfo(uid);
+				await this.getFollowerInfo(uid);
             } else {
                 this.$router.push('/notfound');
             }
@@ -614,6 +677,16 @@ export default {
 
 .h-follow:hover {
     background: #ff85ad;
+}
+
+.h-followed {
+    background: #66ccff;
+    box-shadow: 0 0 0 2px #fff;
+    color: #fff;
+}
+
+.h-followed:hover {
+    background: #66cccc;
 }
 
 .h-add-to-black {
