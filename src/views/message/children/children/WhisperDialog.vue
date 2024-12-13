@@ -100,7 +100,7 @@ export default {
                 headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
             })
         },
-        
+
         // 更新聊天窗口离开状态
         async updateOutline() {
             await this.$get("/msg/chat/outline", {
@@ -130,6 +130,7 @@ export default {
                 anotherId: this.user.uid,
                 content: this.input,
             }
+            console.log("-----------------------------------------------" + msg);
             this.$store.state.ws.send(JSON.stringify(msg));
             // 清空文本
             this.$refs.editor.innerHTML = '';
@@ -213,7 +214,7 @@ export default {
                 if (
                     this.rangeOfEditor.startContainer === this.rangeOfEditor.endContainer &&
                     this.rangeOfEditor.startContainer.nodeName === "#text" &&
-                    this.rangeOfEditor.startOffset === 0 && 
+                    this.rangeOfEditor.startOffset === 0 &&
                     this.rangeOfEditor.endOffset === this.rangeOfEditor.endContainer.length
                 ) {
                     // 选中同一段文本的全部 删除该段文本元素
@@ -223,7 +224,7 @@ export default {
                     this.rangeOfEditor.startContainer !== this.rangeOfEditor.endContainer &&
                     this.rangeOfEditor.startContainer.nodeName === "#text" &&
                     this.rangeOfEditor.endContainer.nodeName === "#text" &&
-                    this.rangeOfEditor.startOffset === 0 && 
+                    this.rangeOfEditor.startOffset === 0 &&
                     this.rangeOfEditor.endOffset === this.rangeOfEditor.endContainer.length
                 ) {
                     // 选中不同两段文本之间的全部 删除该两段段文本之间的全部元素
@@ -232,7 +233,7 @@ export default {
                     const j = childNodesArray.indexOf(this.rangeOfEditor.endContainer);
                     for (var k = i; k <= j; k ++) {
                         this.$refs.editor.removeChild(this.$refs.editor.childNodes[i]);
-                    }                    
+                    }
                 }
                 else {
                     // 否则只删除选中内容
