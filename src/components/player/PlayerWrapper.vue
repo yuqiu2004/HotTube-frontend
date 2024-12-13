@@ -31,7 +31,7 @@
                     <div class="player-state">
                         <div class="player-state-play"></div>
                         <div class="player-state-buff-icon">
-                            <LoadingBuff></LoadingBuff>
+                            <LoadingBuff></LoadingBuff>    
                         </div>
                         <div class="player-state-buff-text">
                             <span>正在缓冲...</span><span>{{ bufferSpeed }}KB/s</span>
@@ -53,7 +53,7 @@
                                     <svg t="1700578364917" class="icon player-follow-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3687" width="12" height="12"><path d="M512 972.8a51.2 51.2 0 0 1-51.2-51.2V102.4a51.2 51.2 0 0 1 102.4 0v819.2a51.2 51.2 0 0 1-51.2 51.2z" p-id="3688" fill="#FFFFFF"></path><path d="M921.6 512H102.4" fill="#FFFFFF" p-id="3689"></path><path d="M921.6 563.2H102.4a51.2 51.2 0 0 1 0-102.4h819.2a51.2 51.2 0 0 1 0 102.4z" p-id="3690" fill="#FFFFFF"></path></svg>
                                     <span class="player-follow-text">关注</span>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <!-- 控制器 -->
@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="player-control-bottom-right">
                                     <!-- 清晰度 -->
                                     <div class="player-ctrl-btn player-ctrl-quality" v-if="false"
@@ -215,7 +215,7 @@
                                             </template>
                                             <div class="player-ctrl-btn-icon" @click="changeFullScreen" @mouseenter="fullTips = true" @mouseleave="fullTips = false">
                                                 <span class="common-svg-icon">
-                                                    <svg v-if="screenType === 'normal'" t="1700682460725" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4481" width="22" height="22"><path d="M992 392h-79.99999969V231.99999969h-160.00000031V152h240v240z m-240 480v-79.99999969h160.00000031v-160.00000031h79.99999969v240h-240zM32 632h79.99999969v160.00000031h160.00000031v79.99999969H32v-240zM272 152v79.99999969H111.99999969v160.00000031H32V152h240z m559.99999969 160.00000031H192.00000031v399.99999938h639.99999938V312.00000031z" fill="#FFFFFF" p-id="4482"></path></svg>
+                                                    <svg v-if="screenType === 'normal'" t="1700682460725" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4481" width="22" height="22"><path d="M992 392h-79.99999969V231.99999969h-160.00000031V152h240v240z m-240 480v-79.99999969h160.00000031v-160.00000031h79.99999969v240h-240zM32 632h79.99999969v160.00000031h160.00000031v79.99999969H32v-240zM272 152v79.99999969H111.99999969v160.00000031H32V152h240z m559.99999969 160.00000031H192.00000031v399.99999938h639.99999938V312.00000031z" fill="#FFFFFF" p-id="4482"></path></svg>    
                                                     <svg v-if="screenType === 'full'" t="1700682742461" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4722" width="22" height="22"><path d="M896 128H128a64.07 64.07 0 0 0-64 64v640a64.07 64.07 0 0 0 64 64h768a64.07 64.07 0 0 0 64-64V192a64.07 64.07 0 0 0-64-64zM448 672a32 32 0 0 1-64 0v-50.75L246.63 758.63a32 32 0 0 1-45.26-45.26L338.75 576H288a32 32 0 0 1 0-64h128a31.83 31.83 0 0 1 22.35 9.1l0.43 0.43A31.83 31.83 0 0 1 448 544z m374.63-361.37L685.25 448H736a32 32 0 0 1 0 64H608a31.83 31.83 0 0 1-22.35-9.1c-0.14-0.14-0.29-0.28-0.43-0.43A31.83 31.83 0 0 1 576 480V352a32 32 0 0 1 64 0v50.75l137.37-137.38a32 32 0 0 1 45.26 45.26z" fill="#FFFFFF" p-id="4723"></path></svg>
                                                 </span>
                                             </div>
@@ -242,7 +242,7 @@
                             {{ population }} 人正在观看
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -258,7 +258,6 @@ import SliderColumn from '@/components/slider/SliderColumn.vue';
 // import ColorPicker from '@/components/color/ColorPicker.vue';
 import { handleTime } from '@/utils/utils.js';
 // import { ElMessage } from 'element-plus';
-
 
 let hideCtrlTimer;  // 隐藏控制器的计时器
 let clickTimer; // 单击播放/暂停事件的防抖计时器
@@ -291,7 +290,7 @@ export default {
             lastTimePoint: 0,   // 上一个播放时间点，用于筛选将展示的弹幕
             dmIndex: -1,     // 当前时间点之前的最后一个弹幕的指针，播放更新的时候这个弹幕及之前的都不会展示（使用索引可以提升筛选效率，前提是根据时间点排序的弹幕列表）
             dmSetting: {
-                opacity: 100,     // 弹幕透明度
+                opacity: 100,     // 弹幕透明度 
                 dmSpeed: 2,   // 弹幕滚动速度，1慢速75px/s 2正常150px/s 4快速300px/s
             },
             rollRow: new Array(12).fill(-1),    // 滚动模式下用于记录每一行上一个弹幕的全呈现时间
@@ -388,7 +387,7 @@ export default {
             formData.append("vid", Number(this.$route.params.vid));
             if (this.$store.state.user.uid) {
                 // 如果用户登录了，就算该用户观看了视频
-                const res = await this.$post("/favorite/video/play/user", formData, {
+                const res = await this.$post("/video/play/user", formData, {
                     headers: { Authorization: "Bearer " + localStorage.getItem("teri_token") }
                 });
                 if (!res.data.data) return;
@@ -420,7 +419,7 @@ export default {
                 rightWidth = 441;
                 bottomHeight = 56;
             }
-
+            
             let heigth = (windowHeight - 64) * 0.7;    // 初始使高为屏高的70%
             let width = (heigth - bottomHeight) * (16/9);    // 初始根据比例计算宽
 
@@ -462,15 +461,15 @@ export default {
             }
             // F键 全屏
             else if (event.keyCode === 70 && !isInputField) {
-                this.changeFullScreen();
+                this.changeFullScreen();               
             }
             // D键 弹幕
             // else if (event.keyCode === 68 && !isInputField) {
-            //     this.changeDanmu();
+            //     this.changeDanmu();               
             // }
             // M键 静音
             else if (event.keyCode === 77 && !isInputField) {
-                this.changeMutedState();
+                this.changeMutedState();               
             }
             // →键 快进5秒
             else if (event.keyCode === 39 && !isInputField) {
@@ -650,7 +649,7 @@ export default {
                 this.fullSrceen();
             } else {
                 this.exitFullscreen();
-            }
+            } 
         },
 
         // 全屏
@@ -690,7 +689,7 @@ export default {
         handleVideoResize() {
             const videoArea = document.querySelector('.player-video-area');
             if (
-                videoArea.clientWidth < window.innerWidth - 1 &&
+                videoArea.clientWidth < window.innerWidth - 1 && 
                 videoArea.clientHeight < window.innerHeight - 1 &&
                 this.screenType !== 'normal'
             ) {
@@ -727,7 +726,7 @@ export default {
             // 展示该时间段的弹幕
             if (this.danmuOpen) {
                 // this.displayDanmus(time);
-            }
+            }            
             this.lastTimePoint = time;
         },
 
@@ -791,7 +790,7 @@ export default {
         ended() {
             if (this.setting.autonext) {
                 this.$emit("next");
-            }
+            }            
         }
     },
     created() {
@@ -843,7 +842,7 @@ export default {
         // 更换视频时初始化
         "videoUrl"() {
             this.canPlay = false;
-            this.initDanmuIndex(0);
+            // this.initDanmuIndex(0);
         },
         // 监听登录状态，如果重新登录就要新增一个播放记录
         "$store.state.isLogin"(curr) {
@@ -2171,7 +2170,7 @@ ol, ul {
         height: 40px;
         width: calc(100% - 84px);
     }
-
+    
     .player-dm-btn-send {
         width: 64px;
         font-size: 14px;
