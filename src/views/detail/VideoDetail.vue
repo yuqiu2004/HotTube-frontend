@@ -470,12 +470,12 @@ export default {
 
         // 获取弹幕列表
         async getDanmuList() {
-            const res = await this.$get(`/danmu-list/${this.$route.params.vid}`);
-            if (res.data.data == null || res.data.data.length === 0) {
-                this.$store.commit("updateDanmuList", []);
-            } else if (res.data.data.length > 0) {
-                this.$store.commit("updateDanmuList", res.data.data);
-            }
+            // const res = await this.$get(`/danmu-list/${this.$route.params.vid}`);
+            // if (res.data.data == null || res.data.data.length === 0) {
+            //     this.$store.commit("updateDanmuList", []);
+            // } else if (res.data.data.length > 0) {
+            //     this.$store.commit("updateDanmuList", res.data.data);
+            // }
         },
 
         // 初始化实时弹幕的websocket
