@@ -263,7 +263,7 @@ export default {
 		
 		// 获取粉丝信息
 		async getFollowerInfo(uid){
-			const res = await this.$get(`/relation/follower/${this.user.uid}`);
+			const res = await this.$get(`/relation/follower/${uid}`);
 			if(!res.data) return;
 			this.user.followsCount = res.data.data.length;
 			this.followStatus = res.data.data.includes(this.$store.state.user.id);
@@ -271,7 +271,7 @@ export default {
 		
 		// 获取关注信息
 		async getFollowedInfo(uid){
-			const res = await this.$get(`/relation/followed/${this.user.uid}`);
+			const res = await this.$get(`/relation/followed/${uid}`);
 			if(!res.data) return;
 			this.user.fansCount = res.data.data.length;
 		},

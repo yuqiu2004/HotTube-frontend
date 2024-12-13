@@ -16,7 +16,7 @@
                     <!-- 视频 -->
                     <div class="player-video-perch">
                         <div class="player-video-wrap">
-                            <video ref="videoPlayer" :src="videoUrl"
+                            <!-- <video ref="videoPlayer" :src="videoUrl"
                                 @loadedmetadata="videoCanPlay"
                                 @timeupdate="timeUpdate"
                                 @progress="updateBufferingBar"
@@ -24,7 +24,8 @@
                                 @canplay="buff = false"
                                 @ended="ended"
                                 :loop="setting.loop"
-                            ></video>
+                            ></video> -->
+                            <video    controls   class="video"   ref="video"    style="width:45rem" ></video>
                         </div>
                     </div>
                     <!-- 状态 -->
