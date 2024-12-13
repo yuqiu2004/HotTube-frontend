@@ -29,7 +29,7 @@
                 </div>
                 <div class="header-banner__inner">
                     <div class="logo-box">
-                        <img src="~assets/img/teriteri-white.png" alt="">
+                        <img src="~assets/img/hottubewhite.png" alt="">
                     </div>
                 </div>
                 <div class="taper-line"></div>

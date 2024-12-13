@@ -10,7 +10,7 @@
                 @click="this.$router.push('/')"
             >
                 <picture class="logo">
-                    <img src="~assets/img/teriteri-pink.png" alt="">
+                    <img src="~assets/img/hottube.png" alt="">
                 </picture>
                 <span>首页</span>
                 <i class="iconfont icon-xiajiantou" :class="isOpen ? 'arrow-down' : ''"></i>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="trending" v-if="searchInput == ''">
                         <div class="header">
-                            <div class="title">teriteri热搜</div>
+                            <div class="title">热搜</div>
                         </div>
                         <div class="trendings-double" v-if="screenWidth >= 1450">
                             <div class="trendings-col" style="max-width: calc(50% - 5px);">
