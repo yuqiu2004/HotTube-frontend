@@ -46,7 +46,7 @@
                     <span class="count">{{ 0 }}</span>
                 </h3>
                 <div class="article-content">
-                    
+
                 </div>
             </div>
             <!-- 收藏夹 -->
@@ -107,7 +107,7 @@
                     <span class="t">最近投币的视频</span>
                 </h3>
                 <div class="coin-content">
-                    
+
                 </div>
             </div>
         </div>
@@ -193,7 +193,7 @@ export default {
 
         // 获取用户最近点赞的视频
         async getLoveVideos() {
-            const res = await this.$get("/video/user-love", {
+            const res = await this.$get("/favorite/video/user-love", {
                 params: {
                     uid: this.uid,
                     offset: 0,

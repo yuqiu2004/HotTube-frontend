@@ -183,7 +183,7 @@ export default {
         async getFavVideos() {
             this.favVideos = [];
             if (!this.currFav) return;
-            const res = await this.$get("/video/user-collect", {
+            const res = await this.$get("/favorite/video/user-collect", {
                 params: {
                     fid: this.currFav.fid,
                     rule: this.rule,
