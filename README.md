@@ -1,2 +1,1 @@
-TODO LIST:
-- 轮播图会重复访问图片 改成一次下载到浏览器 然后轮播？
+## 一个基于vue3的视频播放前端系统，forked from [teriteri-client](https://github.com/xunlu129/teriteri-client)
