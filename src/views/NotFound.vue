@@ -5,7 +5,7 @@
             <div class="notfound-container">
                 <img src="~assets/img/404.png" alt="">
                 <div style="text-align: center; padding: 0 0 40px 0;">
-                    <button class="goback" @click="$router.go(-1)">返回上一页</button>
+                    <button class="goback" @click="$router.go(-1)"> 返回上一页</button>
                 </div>
             </div>           
         </div>
